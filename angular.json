@@ -1,0 +1,157 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "exindev.test": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:interceptor": {
+          "functional": true,
+          "flat": true,
+          "skipTests": true
+        },
+        "@schematics/angular:component": {
+          "style": "css",
+          "inlineStyle": true,
+          "inlineTemplate": true,
+          "flat": true,
+          "skipImport": true,
+          "skipSelector": false,
+          "skipTests": true,
+          "viewEncapsulation": "Emulated",
+          "changeDetection": "OnPush",
+          "prefix": "app",
+          "standalone": true
+        },
+        "@schematics/angular:directive": {
+          "flat": true,
+          "prefix": "app",
+          "skipImport": true,
+          "skipTests": true,
+          "standalone": true
+        },
+        "@schematics/angular:pipe": {
+          "flat": true,
+          "skipImport": true,
+          "skipTests": true,
+          "standalone": true
+        },
+        "@schematics/angular:service": {
+          "flat": true,
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "flat": true,
+          "skipTests": true
+        },
+        "@schematics/angular:resolver": {
+          "flat": true,
+          "skipTests": true
+        },
+        "@schematics/angular:interface": {
+          "prefix": "I",
+          "type": "model"
+        },
+        "@schematics/angular:enum": {
+          "type": "enum"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/exindev.test",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
+            ],
+            "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "exindev.test:build:production"
+            },
+            "development": {
+              "buildTarget": "exindev.test:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "analytics": "bbb04667-9aa4-4a2d-89df-5fd9705b2633"
+  }
+}

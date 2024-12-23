@@ -1,0 +1,20 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+	"name": "Untitled Node.js project",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"appPort": [
+		3000
+	],
+	"forwardPorts": [
+		3000
+	],
+	"remoteUser": "node",
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/joshuanianji/devcontainer-features/github-cli-persistence:1": {},
+		"ghcr.io/prulloac/devcontainer-features/gitlint:1": {},
+		"ghcr.io/devcontainers-extra/features/angular-cli:2": {}
+	}
+}
