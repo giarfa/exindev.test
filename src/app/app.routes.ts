@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { partnersResolver } from './resolvers/partners.resolver';
 import { partnerLevelsResolver } from './resolvers/partnerLevels.resolver';
 import { PartnersComponent } from './pages/partners/partners.component';
+import { partnerResolver } from './resolvers/partner.resolver';
 
 export const routes: Routes = [
   {
@@ -20,7 +21,7 @@ export const routes: Routes = [
         path: ':id',
         pathMatch: 'full',
         resolve: {
-          partner: partnersResolver
+          partner: partnerResolver
         },
         loadComponent: () => import('./pages/partner/partner.component').then(m => m.PartnerComponent)
       }

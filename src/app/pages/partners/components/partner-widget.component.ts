@@ -10,7 +10,7 @@ import { NzProgressModule } from 'ng-zorro-antd/progress';
   selector: 'app-partner-widget',
   imports: [NzCardModule, NzTagModule, NgOptimizedImage, NzIconModule, NzProgressModule],
   template: `
-    <div style="w-full p-4 border border-radius-2 flex flex-col gap-4">
+    <div style="w-full p-4 border rounded flex flex-col gap-4">
       <div>
         <nz-tag [nzColor]="partner().partner_level_color">{{partner().partner_level_name}}</nz-tag>
       </div>

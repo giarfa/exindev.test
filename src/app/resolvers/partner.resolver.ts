@@ -4,7 +4,7 @@ import { IPartner } from '../models/partner.model';
 import { firstValueFrom } from 'rxjs';
 import { PartnersDataFactory } from '../services/partners-data.factory';
 
-export const partneResolver: ResolveFn<IPartner | null> = async (route, state) => {
+export const partnerResolver: ResolveFn<IPartner | null> = async (route, state) => {
   const rawPartnerId = route.paramMap.get('id');
   const partnerId = rawPartnerId ? parseInt(rawPartnerId) : null;
   const factory = inject(PartnersDataFactory);

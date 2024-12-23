@@ -87,6 +87,6 @@ export class PartnersDataService extends PartnersService {
    */
   getById(id: IPartner['id']): Observable<IPartner> {
     const url = `${this.baseUrl}/${id}`;
-    return this._http.get<IPartner>(url).pipe(map(data => new Partner(data)));
+    return this._http.get<{ data: IPartner }>(url).pipe(map(data => new Partner(data?.data)));
   }
 }
