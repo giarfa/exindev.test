@@ -10,14 +10,17 @@ import { NzProgressModule } from 'ng-zorro-antd/progress';
   selector: 'app-partner-widget',
   imports: [NzCardModule, NzTagModule, NgOptimizedImage, NzIconModule, NzProgressModule],
   template: `
-    <div style="w-full p-4 border border-radius-2 flex flex-col gap-2">
+    <div style="w-full p-4 border border-radius-2 flex flex-col gap-4">
       <div>
         <nz-tag [nzColor]="partner().partner_level_color">{{partner().partner_level_name}}</nz-tag>
       </div>
-      <img clas="w-full" [ngSrc]="partner().logo_url.src" fill />
+
+      <div class="relative w-full border-radius aspect-video overflow-hidden">
+        <img [ngSrc]="partner().logo_url.src" fill priority />
+      </div>
 
       <div>
-        <div class="flex justify-between">
+        <div class="flex justify-between font-bold">
           <h3>Budget</h3>
           <nz-icon nzType="search" />
         </div>

@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   template: `
     <div nz-row [nzGutter]="[16, 16]">
     @for (partner of partners(); track partner.id) {
-      <app-partner-widget class="cursor-pointer" nz-col [nzSpan]="2" [partner]="partner" [routerLink]="['.', partner.id]"></app-partner-widget>
+      <app-partner-widget class="cursor-pointer aspect-square overflow-hidden" nz-col [nzSpan]="4" [partner]="partner" [routerLink]="['.', partner.id]"></app-partner-widget>
     }
     </div>
   `,

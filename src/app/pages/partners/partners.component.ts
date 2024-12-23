@@ -8,8 +8,11 @@ import { PartnerSearchFilterComponent } from './components/partner-search-filter
 @Component({
   selector: 'app-partners',
   imports: [PartnerLevelFilterComponent, PartnerSearchFilterComponent, PartnerListComponent],
+  host: {
+    class: 'flex flex-col gap-4 p-8'
+  },
   template: `
-    <div class="flex justify-between p-4">
+    <div class="flex justify-between">
       <app-partner-level-filter [partnerLevels]="partnerLevels()" [selected]="selectedLevel()" (selectionChange)="selectedLevel.set($event)"></app-partner-level-filter>
       <app-partner-search-filter (onChange)="searchKeyword.set($event)"></app-partner-search-filter>
     </div>
