@@ -2,3 +2,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --color-fatturato: #12b76a;
+  --color-allocato: #6CE9A6;
+  --color-residuo: #D6D6D6;
+}
+
+html, body {
+  background-color: #f5f5f5;
+  display: flex;
+  min-width: 100dvh;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

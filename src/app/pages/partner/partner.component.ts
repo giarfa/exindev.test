@@ -1,18 +1,24 @@
-import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, ViewEncapsulation } from '@angular/core';
 import { IPartner } from '../../models/partner.model';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-partner',
-  imports: [],
+  imports: [NzPageHeaderModule],
   template: `
-    <p>
-      {{ partner().name }}
-    </p>
+    <nz-page-header (nzBack)="onBack()" nzBackIcon [nzTitle]="partner().name"></nz-page-header>
   `,
   styles: ``,
   encapsulation: ViewEncapsulation.Emulated,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PartnerComponent {
-  partner = input.required<IPartner>();
+  readonly partner = input.required<IPartner>();
+
+  private readonly router = inject(Router);
+
+  onBack(): void {
+    this.router.navigate(['../'], { relativeTo: this.router.routerState.root });
+  }
 }

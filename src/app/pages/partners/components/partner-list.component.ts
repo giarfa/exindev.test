@@ -1,16 +1,31 @@
 import { ChangeDetectionStrategy, Component, input, ViewEncapsulation } from '@angular/core';
 import { IPartner } from '../../../models/partner.model';
-import { PartnerWidgetComponent } from './partner-widget.component';
-import { NzGridModule } from 'ng-zorro-antd/grid';
+import { PartnerWidgetComponent } from './partner-widget/partner-widget.component';
 import { RouterLink } from '@angular/router';
+import { NzEmptyModule } from 'ng-zorro-antd/empty';
 
 @Component({
   selector: 'app-partner-list',
-  imports: [PartnerWidgetComponent, NzGridModule, RouterLink],
+  imports: [PartnerWidgetComponent, RouterLink, NzEmptyModule],
   template: `
-    <div nz-row [nzGutter]="[16, 16]">
+    <div class="grid grid-cols-12 gap-4">
     @for (partner of partners(); track partner.id) {
-      <app-partner-widget class="cursor-pointer aspect-square overflow-hidden" nz-col [nzSpan]="4" [partner]="partner" [routerLink]="['.', partner.id]"></app-partner-widget>
+      @defer(on viewport) {
+        <app-partner-widget
+          class="cursor-pointer aspect-square overflow-hidden col-span-2 border rounded bg-white"
+          [partner]="partner"
+          [routerLink]="['.', partner.id]"
+        ></app-partner-widget>
+      } @placeholder {
+        <div class="aspect-square col-span-2 border rounded">
+          <div class="animate-pulse bg-gray-200" style="height: 100%"></div>
+        </div>
+      }
+    }
+    @empty {
+      <div class="col-span-12 row-span-3 flex justify-center items-center">
+        <nz-empty nzNotFoundImage="simple"  [nzNotFoundContent]="null"></nz-empty>
+      </div>
     }
     </div>
   `,
